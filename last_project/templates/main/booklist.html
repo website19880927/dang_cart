@@ -1,0 +1,265 @@
+{% extends 'main/base.html' %}
+{% block super1 %}
+{% load static %}
+{#    <script src="{% static 'js/jquery.1.4.2-min.js' %}"></script>#}
+    <script src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
+<div id="bd_auto" name="9149">
+
+              <div class="top_ad_banner"><a href="#"><img src="/static/images/1200x65_sk_1229.jpg" width="1200" height="65" /></a></div>
+              <div class="breadcrumb" id="B"> <a href="{% url 'main:all' %}">当当</a> <span>&gt;</span> <a href="{% url 'main:all' %}" name="B">图书</a><span>&gt;</span> <a href="{% url 'main:list' %}?id={{ id }}" name="B">{{ cate1.title }}</a><span>&gt;</span>
+                  <a href="{% url 'main:list' %}?id={{ id }}&sid={{ sid }}"><span class="current">{{ cate2.title }} </span></a>
+
+  </div>
+              <div class="col aside" name="4931">
+    <div class="" name="m142905_pid0_t4824">
+                  <div class="col storey_one_left" name="9163">
+      <div class="sidemenu" name="m403752_pid0_t9141" dd_name="左侧分类" ddt-area="mix_403752" ddt-floor="mix_403752">
+        <div class="con flq_head" >图书分类</div>
+        <div class="con flq_body" >
+
+
+            
+
+            
+<div class="level_one">
+            <dl class="con primary_dl">
+
+
+                <dt class="con " name="m403752_pid5367_t10276"><span><a href="{% url 'main:list' %}?id={{ cate1.id }}" target="_blank">{{ cate1.title }}</a></span></dt>
+
+
+              {% for i in cate %}
+                   <dd class="con sec_cate dd_level1">
+
+                          <a href="{% url 'main:list' %}?id={{ i.parent_id }}&sid={{ i.id }}" target="_blank">{{ i.title }}</a>
+
+                  </dd>
+              {% endfor %}
+
+
+            </dl>
+          </div>
+
+
+
+
+        </div>
+      </div>
+      <div class="spacer"></div>
+    </div>
+                </div>
+   
+  </div>
+              <div class="col article">
+    
+    <div class="bk_sort" name="Sort">
+                  <div id="component_281329"></div>
+                  <div class="con tools_box">
+        <div class="con top">
+                      <div class="col ">
+            <div class="t">排序：</div>
+            <ul class="sorting_box" name="Sort">
+                          <li class="on">
+                <div onclick="gotom('',0)" title="默认排序" name="Mo" ddclick="act=sort_default&amp;pos=0_0_0_p&amp;cat=01.01.00.00.00.00&amp;key=&amp;qinfo=&amp;pinfo=46134_1_60&amp;minfo=&amp;ninfo=&amp;custid=&amp;permid=20170105134312699266298643557280076&amp;ref=http%3A%2F%2Fproduct.dangdang.com%2F24162936.html&amp;rcount=&amp;type=&amp;t=1484359320000&amp;sell_run=0&amp;searchapi_version=eb_split">默认排序</div>
+              </li>
+                          <li class="">
+                              <div name="Xl" id="cli1" >
+                              <a href="{% url 'main:list' %}?num={{ page.number }}&id={{ id }}&sid={{ sid }}&flag=1"> 销量由高到低</a>
+                            <span class="icon"></span></div>
+{#                              <script>#}
+{#                                  $("#cli1").click(function () {#}
+{#                                      a=document.getElementById('cli')#}
+{#                                      a.style.backgroundColor='red'#}
+{#                                  })#}
+{#                              </script>#}
+                          </li>
+<li class="">
+                              <div name="Xl" onclick="gotom('',0)">
+                              <a href="{% url 'main:list' %}?num={{ page.number }}&id={{ id }}&sid={{ sid }}&flag=2"> 价格由低到高</a>
+                            <span class="icon"></span></div></li>
+                <li class="">
+                              <div name="Xl" onclick="gotom('',0)">
+                              <a href="{% url 'main:list' %}?num={{ page.number }}&id={{ id }}&sid={{ sid }}&flag=3"> 出版时间排序</a>
+                            <span class="icon"></span></div></li>
+{#                              <div name="Xl" onclick="gotom('/cp01.01.00.00.00.00-srsort_sale_amt_desc.html',0)" title="销量由高到低" ddclick="act=sort_xsale_desc&amp;pos=0_0_0_p&amp;cat=01.01.00.00.00.00&amp;key=&amp;qinfo=&amp;pinfo=46134_1_60&amp;minfo=&amp;ninfo=&amp;custid=&amp;permid=20170105134312699266298643557280076&amp;ref=http%3A%2F%2Fproduct.dangdang.com%2F24162936.html&amp;rcount=&amp;type=&amp;t=1484359320000&amp;sell_run=0&amp;searchapi_version=eb_split">销量<span class="icon"></span></div> #}
+
+{#                          <li class="">#}
+{#                <div name="Jg" onclick="gotom('/cp01.01.00.00.00.00-srsort_xlowprice_asc.html',1)" title="价格由低到高" ddclick="act=sort_saleprice_asc&amp;pos=0_0_0_p&amp;cat=01.01.00.00.00.00&amp;key=&amp;qinfo=&amp;pinfo=46134_1_60&amp;minfo=&amp;ninfo=&amp;custid=&amp;permid=20170105134312699266298643557280076&amp;ref=http%3A%2F%2Fproduct.dangdang.com%2F24162936.html&amp;rcount=&amp;type=&amp;t=1484359320000&amp;sell_run=0&amp;searchapi_version=eb_split">价格<span class="icon icon_t"></span></div>#}
+{#              </li>#}
+{#                          <li class="">#}
+
+{#                <div name="OT" onclick="gotom('/cp01.01.00.00.00.00-srsort_pubdate_desc.html',0)" title="出版时间由近到远" ddclick="act=desc&amp;pos=0_0_0_p&amp;cat=01.01.00.00.00.00&amp;key=&amp;qinfo=&amp;pinfo=46134_1_60&amp;minfo=&amp;ninfo=&amp;custid=&amp;permid=20170105134312699266298643557280076&amp;ref=http%3A%2F%2Fproduct.dangdang.com%2F24162936.html&amp;rcount=&amp;type=&amp;t=1484359320000&amp;sell_run=0&amp;searchapi_version=eb_split">出版时间<span class="icon"></span></div>#}
+{#              </li>#}
+                        </ul>
+            <div class="select_box" name="Xl"><span class="d">默认排序</span><span class="arrow"></span>
+                          <div class="select_pop" style="display: none;">
+                <ul>
+                              <li class="on"><a name="Mo" href="/cp01.01.00.00.00.00.html#ddclick?act=sort_default&amp;pos=0_0_0_p&amp;cat=01.01.00.00.00.00&amp;key=&amp;qinfo=&amp;pinfo=46134_1_60&amp;minfo=&amp;ninfo=&amp;custid=&amp;permid=20170105134312699266298643557280076&amp;ref=http%3A%2F%2Fproduct.dangdang.com%2F24162936.html&amp;rcount=&amp;type=&amp;t=1484359320000&amp;sell_run=0&amp;searchapi_version=eb_split">默认排序</a></li>
+                              <li class=""><a name="Xl" href="/cp01.01.00.00.00.00-srsort_sale_amt_desc.html#ddclick?act=sort_xsale_desc&amp;pos=0_0_0_p&amp;cat=01.01.00.00.00.00&amp;key=&amp;qinfo=&amp;pinfo=46134_1_60&amp;minfo=&amp;ninfo=&amp;custid=&amp;permid=20170105134312699266298643557280076&amp;ref=http%3A%2F%2Fproduct.dangdang.com%2F24162936.html&amp;rcount=&amp;type=&amp;t=1484359320000&amp;sell_run=0&amp;searchapi_version=eb_split">按销量降序<span class="up"></span></a></li>
+                              <li class=""><a name="Jg" href="/cp01.01.00.00.00.00-srsort_xlowprice_asc.html#ddclick?act=sort_saleprice_asc&amp;pos=0_0_0_p&amp;cat=01.01.00.00.00.00&amp;key=&amp;qinfo=&amp;pinfo=46134_1_60&amp;minfo=&amp;ninfo=&amp;custid=&amp;permid=20170105134312699266298643557280076&amp;ref=http%3A%2F%2Fproduct.dangdang.com%2F24162936.html&amp;rcount=&amp;type=&amp;t=1484359320000&amp;sell_run=0&amp;searchapi_version=eb_split">按价格升序<span class="down"></span></a></li>
+                              <li class=""><a name="Jg" href="/cp01.01.00.00.00.00-srsort_xlowprice_desc.html#ddclick?act=sort_saleprice_desc&amp;pos=0_0_0_p&amp;cat=01.01.00.00.00.00&amp;key=&amp;qinfo=&amp;pinfo=46134_1_60&amp;minfo=&amp;ninfo=&amp;custid=&amp;permid=20170105134312699266298643557280076&amp;ref=http%3A%2F%2Fproduct.dangdang.com%2F24162936.html&amp;rcount=&amp;type=&amp;t=1484359320000&amp;sell_run=0&amp;searchapi_version=eb_split">按价格降序<span class="up"></span></a></li>
+                             
+                              <li class=""><a name="OT" href="/cp01.01.00.00.00.00-srsort_pubdate_desc.html#ddclick?act=desc&amp;pos=0_0_0_p&amp;cat=01.01.00.00.00.00&amp;key=&amp;qinfo=&amp;pinfo=46134_1_60&amp;minfo=&amp;ninfo=&amp;custid=&amp;permid=20170105134312699266298643557280076&amp;ref=http%3A%2F%2Fproduct.dangdang.com%2F24162936.html&amp;rcount=&amp;type=&amp;t=1484359320000&amp;sell_run=0&amp;searchapi_version=eb_split">出版时间降序<span class="up"></span></a></li>
+                            </ul>
+              </div>
+                        </div>
+            <script type="text/javascript">
+    function gotom(sort_field,is_both_sort){
+        if (sort_field == ""){
+            location.href = "/cp01.01.00.00.00.00.html";
+        }else{
+            
+            location.href = sort_field;
+        }
+        
+    }
+</script></div>
+                      <div class="col "> 
+            <!--<div class="t_s">价格：</div>
+<div class="interval" id="prices" name="Jgsx">
+    <div class="inner">
+        <input type='text' class='text' value='' name='low_price' id='input_lowp'/>-<input type='text' class='text' value='' name='high_price' id='input_highp'/>        <div><input type="button" class="button" value="清除" id="btn_cls" name="Price"/><input type="button" class="button btn_yes " value="确定" id="btn_yes" name="Price" /></div>
+    </div>
+</div>--> 
+            
+          </div>
+                      <div class="col ">
+            <div class="data" name="Fy">共<span>{{ amount }}</span>个商品 <a class="arrow_l"></a> <span class="or">1</span><span>/{{ page.paginator.num_pages }}</span> <a href="/pg2-cp01.01.00.00.00.00.html" class="arrow_r arrow_r_on"></a> </div>
+          </div>
+                    </div>
+        
+      </div>
+                </div>
+  </div>
+              <div class="book_shoplist" dd_utopia="on" name="Product">
+    <div id="component_2963524"></div>
+    <div class="con shoplist">
+                  <ul class="list_aa listimg" id="component_0__0__3058">
+                      {% for foo in page.object_list %}
+
+
+
+
+<li class="line1" id="23668351">
+                      <div class="inner"> <a title=" 我与世界只差一个你 " class="pic" href="{% url 'main:one' %}?pk={{ foo.id }}" target="_blank"><img src="{% static foo.cover.url %}" alt=" 我与世界只差一个你 "></a>
+            <p class="name"><a title=" 我与世界只差一个你 " href="{% url 'main:one' %}?pk={{ foo.id }}" target="_blank"> {{ foo.name }} </a></p>
+
+            <div class="publisher_info">
+                          <p class="author"><span></span><a href="#" name="P_zz" title="张皓宸">{{ foo.author }}</a></p>
+                          <p class="publishing_time"><span></span>/ {{ foo.publish_time }} </p>
+                          <p class="publishing"><span></span>/ <a href="#" name="P_cbs" title="天津人民出版社">{{ foo.publisher }}</a></p>
+                        </div>
+
+            <p class="detail"> {{ book.editer_recommend }} </p>
+            <p class="dang" style="display: block;">当当自营  &nbsp  銷量{{ foo.sales_amount }}</p>
+
+            <p class="buy_button"><a class="listbtn_info" name="area_buy" dd_name="查看详情" href="javascript:goto_product(23668351)">查看详情</a></p>
+            <p class="price"> <span class="price_n">￥{{ foo.dang_price }}</span><a style="color: #878787;text-decoration:none;">定价：</a><span class="price_r">￥{{ foo.market_price }}</span>(<span class="price_s">  折</span>)</p>
+            <div class="ebook_buy">
+                 <p class="buy_button"><img src="" height="15px" id="im1{{ foo.id }}" alt=""><a class="listbtn_buy" id="A13{{ foo.id }}" dd_name="加入购物车" href="javascript:void(0)" name="Buy"></a></p>
+
+
+            </div>
+                          <script type="text/javascript">
+                   $("#A13{{ foo.id }}").click(function ()  {
+                       var xhr = new XMLHttpRequest();
+{#                       xhr.open('post',"{% url 'order:logic' %}");#}
+{#                       xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');#}
+{#                       xhr.setRequestHeader('X-CSRFToken','{{ csrf_token }}');#}
+{#                       xhr.send('pk='+{{ foo.id }})#}
+                       xhr.open('get',"{% url 'order:logic' %}?pk={{ foo.id }}&amount=1")
+                       console.log({{ foo.id }});
+                       $("#im1{{ foo.id }}").prop('src',"{% static 'images/load.gif' %}")
+                       xhr.send()
+                       xhr.onreadystatechange=function () {
+                if (xhr.readyState==4 && xhr.status==200){
+                    re = xhr.responseText;
+                     $("#im1{{ foo.id }}").prop('src',"{% static 'images/ok.gif' %}")
+                    if(re == 'ok'){
+                        b=confirm('加入成功 ，是否结算')
+                        if(b){
+                            location.href="{% url 'order:cart_page' %}"
+                        }
+                    }
+                }
+            }
+
+                   })
+              </script>
+            <p class="subtitle"> {{ foo.tips_chapter }} </p>
+          </div>
+
+                    </li>
+ {% endfor %}
+
+
+
+      </ul>
+                </div>
+              <div class="con paginating" name="m2963520_pid0_t3990"><script type="text/javascript" src="/static/js/jquery/lazyload181.js"></script>
+<script type="text/javascript"> $("img[data-original]").lazyload(); </script>
+
+<ul class="paging" name="Fy">
+
+                  <li class=""><a   href="{% url 'main:list' %}?num=1&id={{ id }}&sid={{ sid }}">首页</a></li>
+              {% if page.has_previous %}
+                  <li class=""><a href="{% url 'main:list' %}?num={{ page.previous_page_number }}&id={{ id }}&sid={{ sid }}&flag={{ flag }}">前一页</a></li>
+              {% endif %}
+                          {% for foo in page.paginator.page_range %}
+                              {% if foo == page.number %}
+                                <li><a  class=" current" style="color: palevioletred"  href="{% url 'main:list' %}?num={{ foo }}&id={{ id }}&sid={{ sid }}&flag={{ flag }}">{{ foo }}</a>
+                                    </li>
+                                    {% else %}
+                                 <li> <a class=" null"  href="{% url 'main:list' %}?num={{ foo }}&id={{ id }}&sid={{ sid }}&flag={{ flag }}">{{ foo }}</a></li>
+                              {% endif %}
+                          {% endfor %}
+              {% if page.has_next %}
+                  <li class="next"><a href="{% url 'main:list' %}?num={{ page.next_page_number }}&id={{ id }}&sid={{ sid }}&flag={{ flag }}">下一页</a></li>
+              {% endif %}
+                  <li class="next"><a href="{% url 'main:list' %}?num={{ page.paginator.num_pages }}&id={{ id }}&sid={{ sid }}&flag={{ flag }}">尾页</a></li>
+
+
+            <li class="page_input"><span>共{{ page.paginator.num_pages }}页 到第</span>
+        <input id="t__cp" type="text" class="number" value="1">
+        <span>页</span>
+        <input class="button" id="click_get_page" value="确定" type="button"></li>
+</ul>
+
+</div>
+
+
+{#                <div class="" name="m2963520_pid0_t3989">#}
+{#                    <div id="component_2963520"></div>#}
+{#                    <div class="con paginating" name="m2963520_pid0_t3990">#}
+{#                    <script type="text/javascript" src="/static/js/jquery/lazyload181.js"></script>#}
+{#                    <script type="text/javascript"> $("img[data-original]").lazyload(); </script>#}
+{#                    <ul class="paging" name="Fy">#}
+{#                        <li class="prev none"><a>上一页</a></li>#}
+{#                        <li><a href="/cp01.01.00.00.00.00.html" class=" current">1</a></li>#}
+{#                            <li><a href="/pg2-cp01.01.00.00.00.00.html" class="null">2</a></li>#}
+{#                            <li><a href="/pg3-cp01.01.00.00.00.00.html" class="null">3</a></li>#}
+{#                            <li><a href="/pg4-cp01.01.00.00.00.00.html" class="null">4</a></li>#}
+{#                            <li><a href="/pg5-cp01.01.00.00.00.00.html" class="null">5</a></li>#}
+{#                            <li><a href="/pg6-cp01.01.00.00.00.00.html" class="null">6</a></li>#}
+{#                            <li><span>...<span></span></span></li>#}
+{#                        <li class="next"><a href="/pg2-cp01.01.00.00.00.00.html">下一页</a></li>#}
+{#                        <li class="page_input"><span>共100页 到第</span>#}
+{#                    <input id="t__cp" type="text" class="number" value="1">#}
+{#                    <span>页</span>#}
+{#                    <input class="button" id="click_get_page" value="确定" type="button"></li>#}
+{#                </ul>#}
+{##}
+{#                </div>#}
+{#                </div>#}
+  </div>
+  
+            </div>
+<div id="footer">
+              <link href="/static/css/footer_150526.css" rel="stylesheet" type="text/css">
+              <div class="footer" dd_name="页尾">
+    <div class="footer_pic_new">
+                  <div class="footer_pic_new_inner"> <a name="foot_1" href="http://help.dangdang.com/details/page13" target="_blank" class="footer_pic01"><span>正规渠道正品保障</span></a> <a name="foot_2" class="footer_pic02" href="http://help.dangdang.com/details/page21" target="_blank"><span>放心购物货到付款</span></a> <a name="foot_3" class="footer_pic03" href="http://help.dangdang.com/details/page16" target="_blank"><span>150城市次日送达</span></a> <a name="foot_4" class="footer_pic04" href="http://help.dangdang.com/details/page29" target="_blank"><span>上门退货当场退款</span></a> </div>
+                </div>
+
+
+{% endblock %}

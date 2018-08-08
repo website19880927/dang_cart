@@ -1,0 +1,169 @@
+{% load static %}
+<script src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
+<style>
+	.table1{
+		border-color: lightgray;
+	}
+	.td1,.td2{
+		height: 36px;
+	}
+	.td1{
+		text-align: right;
+		padding-right: 5px;
+		background-color: rgb(230,242,254);
+		font-size: 14px;
+	}
+	.td2{
+		padding-left: 5px;
+	}
+</style>
+<form  method="post" action="{% url 'user_admin:add_logic' %}?flag=1" enctype="multipart/form-data">
+{% csrf_token %}
+<table class="table1" border="1" cellspacing="0" width="1110px">
+{% for b in book %}
+
+
+
+	<tr>
+		<td class="td1">商品名称:</td>
+		<td class="td2"><input type="text" name="name" value="{{ b.name }}"></td>
+	</tr>
+	<tr>
+		<td class="td1">作者:</td>
+		<td class="td2"><input type="text" name="author"  value="{{ b.author }}"></td>
+	</tr>
+	<tr>
+		<td class="td1">出版社:</td>
+		<td class="td2"><input type="text" name="publisher" value="{{ b.publisher }}"/></td>
+	</tr>
+	<tr>
+		<td class="td1">商品父类:</td>
+		<td class="td2">
+			<select id="super" name="father">
+                {% for foo in cate %}
+                    <option>{{ foo.title }}</option>
+                {% endfor %}
+
+			</select>
+            <select id="sub" name="son">
+                    <option>{{ c.title }}</option>
+			</select>
+            <script>
+               $("#super").change(function () {
+
+                    op=$("[name='father'] option:selected").text()
+                    console.log(op)
+                    $("#sub").empty();
+                    var xhr=new XMLHttpRequest();
+                    xhr.open('get',"{% url 'user_admin:ajax' %}?change="+op)
+                    xhr.send();
+                    xhr.onreadystatechange=function () {
+                        if(xhr.readyState==4 && xhr.status==200){
+                            re=xhr.responseText
+                            re1=eval(re)
+                            console.log(re)
+                            console.log(re1)
+                            for(var i=0;i<re1.length;i++){
+                                title=re1[i].title
+                                console.log(title)
+                                $("#sub").append('<option>'+title+'</option>')
+                            }
+
+                        }
+                    }
+
+                });
+            </script>
+		</td>
+	</tr>
+	<tr>
+		<td class="td1">出版日期:</td>
+		<td class="td2">
+			<input type="date" name="publish_time" value="{{ b.publish_time }}" />
+		</td>
+	</tr>
+		<tr>
+		<td class="td1">封面:</td>
+		<td class="td2">
+			<input type="file" name="cover"  /><img id="pic" height="50px" src="{% static b.cover.url %}">
+		</td>
+	</tr><tr>
+		<td class="td1">市场价:</td>
+		<td class="td2">
+			<input type="text" name="market_price" value="{{ b.market_price }}" />
+		</td>
+	</tr><tr>
+		<td class="td1">当当价:</td>
+		<td class="td2">
+			<input type="text" name="dang_price" value="{{ b.dang_price }}"  />
+		</td>
+	</tr>
+    <tr>
+		<td class="td1">数量:</td>
+		<td class="td2">
+			<input type="text" name="sales_amount" value="{{ b.sales_amount }}"  />
+		</td>
+	</tr><tr>
+		<td class="td1">页码:</td>
+		<td class="td2">
+			<input type="text" name="page_number" value="{{ b.page_number }}"  />
+		</td>
+	</tr>
+    <tr>
+		<td class="td1">版本号:</td>
+		<td class="td2">
+			<input type="text" name="edition"  value="{{ b.edition }}"  />
+		</td>
+	</tr><tr>
+		<td class="td1">字数:</td>
+		<td class="td2">
+			<input type="text" name="words_number" value="{{ b.words_number }}"  />
+		</td>
+	</tr><tr>
+		<td class="td1">编辑推荐:</td>
+		<td class="td2">
+			<input type="text" name="editer_recommend" value="{{ b.editer_recommend }}" />
+		</td>
+	</tr><tr>
+		<td class="td1">内容简介:</td>
+		<td class="td2">
+			<input type="text" name="brief_introduction" value="{{ b.brief_introduction }}"  />
+		</td>
+	</tr><tr>
+		<td class="td1">作者简介:</td>
+		<td class="td2">
+			<input type="text" name="author_introduction" value="{{ b.author_introduction }}" />
+		</td>
+	</tr><tr>
+		<td class="td1">目录:</td>
+		<td class="td2">
+			<input type="text" name="catalogue" value="{{ b.catalogue }}"  />
+		</td>
+	</tr><tr>
+		<td class="td1">媒体评论:</td>
+		<td class="td2">
+			<input type="text" name="media_comments" value="{{ b.media_comments }}" />
+		</td>
+	</tr><tr>
+		<td class="td1">章节预览:</td>
+		<td class="td2">
+			<input type="text" name="tips_chapter" value="{{ b.tips_chapter }}"  />
+		</td>
+	</tr>
+    <tr>
+		<td class="td1">检查后提交：</td>
+
+		<td class="td2" >
+            <input type="submit"  value="提交">
+             <div id="n6" style="width: 300px;height: 20px;background-color:gray;">
+     <div id="n5" style="width: 3%;height: 20px;background-color:lightgrey;"></div>
+     </div><span id="n4"></span>
+		</td>
+	</tr>
+{% endfor %}
+</table>
+
+
+
+</form>
+

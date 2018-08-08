@@ -1,0 +1,370 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+{% load static %}
+
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <script src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
+    <script src="/static/js/jquery_cookie.js"></script>
+    <link rel="shortcut icon" href="/static/images/favicon.ico?v=20160901" type="image/x-icon">
+    <link href="/static/css/shopping_cart_new.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/footer_150526.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body style="padding-bottom:82px">
+
+<link href="/static/css/header_960_150611.css" rel="stylesheet" type="text/css">
+<script src="/static/js/pagetop2015_0827.js" charset="gb2312" type="text/javascript"></script>
+
+<div id="hd">
+    <div id="tools">
+        <div class="tools">
+            <div class="ddnewhead_operate" dd_name="顶链接">
+
+                <div class="ddnewhead_welcome" display="none;">
+                    <span id="nickname"><span class="hi">Hi，
+                        <a href="http://myhome.dangdang.com/" class="login_link" target="_blank">
+
+                            <b>{{ name }}</b>
+                        </a><a href="{% url 'main:all' %}?key=1" target="_self">[退出]</a></span></span>
+                    <div class="tel_pop" style="display:none" id="__ddnav_sjdd"
+                         onmouseover="showgaoji('a_phonechannel','__ddnav_sjdd');"
+                         onmouseout="hideotherchannel('a_phonechannel','__ddnav_sjdd');">
+                        <a target="_blank" href="http://t.dangdang.com/20130220_ydmr" class="title"><i
+                                class="icon_tel"></i>手机当当</a><i class="title_shadow"></i>
+                        <ul class="tel_pop_box">
+                            <li><a href="http://t.dangdang.com/20130220_ydmr" dd_name="手机二维码"><span>当当手机客户端</span><img
+                                    src="http://img3.ddimg.cn/00363/doc/erweima2.png"><span class="text">随手查订单<br>随时享优惠</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="new_head_znx" id="znx_content" style="display:none;"></div>
+            </div>
+        </div>
+    </div>
+    <div id="header_end"></div>
+    <!--CreateDate  2016-09-28 11:30:01--></div>
+<form action="http://search.dangdang.com/search.aspx" id="bootpagetopSearch" name="bootpagetopSearch"
+      method="GET"></form>
+<script type="text/javascript">var nick_num = 0;
+initHeaderOperate();</script>
+<script type="text/javascript" src="http://orderb.dangdang.com/queryunpaid?callback=Unpaid_Data"></script>
+<div class="shoppingcart_wrapper" id="ad_cpt_11850">
+    <div>
+        <a href="http://a.dangdang.com/tjump.php?q=ddo84XQOf357bOs8tXGg5%2F%2F0oVoDImt3DFWsMqu7ZMSVsfUMeOQJueASNiMLjq%2FdrXMLCKnVfyKEahteAh1ih%2ByKYrKGzhvL20LVbDzObRambBA0YPpivy5hR5foQ4Rt%2BTB"
+           target="_blank" rel="nofollow"><img src="http://img62.ddimg.cn/2017/1/11/2017011111344969879.jpg"></a></div>
+</div>
+<div class="logo_line">
+    <div class="w960">
+        <div class="shopping_procedure01 shopping_procedure "><span>我的购物车</span><span class="current">填写订单</span><span>完成订单</span>
+        </div>
+        <div class="logo"><a href="#"><img src="/static/images/bz_logo_car.jpg" alt=""></a></div>
+    </div>
+</div>
+<div class="indent_con">
+    <div class="shdz">
+        <h3>收货相关信息</h3>
+        <ul class="shdz_con">
+            <p>▪ 收货地址
+            {% if add %}
+                 <select name="add" id="login_select_address" style="margin-left: 5px">
+                  <option value="01">选择地址</option>
+                {% for foo in add %}
+                    <option value="01">{{ foo.site }}</option>
+                {% endfor %}
+
+
+            </select>
+            {% endif %}</p>
+
+
+            <li><label><strong>*</strong>收&nbsp;&nbsp;货&nbsp;&nbsp;人：</label>
+                <input type="text" name="ship_man" id="receiver_address"><span id="spn_ship_man" class="hint new_tip" style="display: block;">请填写收货人姓名</span></li>
+            <li>
+                <label><strong>*</strong>收货地区：</label>
+
+            <div class="info">
+
+                <div>
+
+                <select id="s_province" name="s_province"></select>  
+
+                <select id="s_city" name="s_city" ></select>  
+
+                <select id="s_county" name="s_county"></select>
+
+                <script class="resources library" src="{% static 'js/area.js' %}" type="text/javascript"></script>
+
+
+
+                <script type="text/javascript">_init_area();</script>
+
+                </div>
+
+                <div id="show"></div>
+
+            </div>
+
+            <script type="text/javascript">
+
+            var Gid  = document.getElementById ;
+
+            var showArea = function(){
+
+                Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +
+
+                Gid('s_city').value + " - 县/区" +
+
+                Gid('s_county').value + "</h3>"
+
+                                        }
+
+            Gid('s_county').setAttribute('onchange','showArea()');
+
+            </script>
+
+            </li>
+            <script type="text/javascript">
+{#                $("#province_id").click(function () {#}
+{#                    var xhr = new XMLHttpRequest();#}
+{#                    xhr.open()#}
+{#                })#}
+
+                $("#province_id").change(function () {
+
+                    op=$("[name='province_id'] option:selected").text()
+                    console.log(op)
+                    $("#city_id").empty();
+                    var xhr=new XMLHttpRequest();
+                    xhr.open('get',"{% url 'order:change_select' %}?change="+op)
+                    xhr.send();
+                    xhr.onreadystatechange=function () {
+                        if(xhr.readyState==4 && xhr.status==200){
+                            re=xhr.responseText
+                            re1=eval(re)
+                            //console.log(re)
+                            console.log(re1)
+                            for(var i=0;i<re1.length;i++){
+                                city=re1[i].city
+                                console.log(city)
+                                $("#city_id").append('<option>'+city+'</option>')
+                            }
+
+                        }
+                    }
+
+                });
+                $("#city_id").change(function () {
+
+                    op=$("[name='city_id'] option:selected").text()
+                    console.log(op)
+                    $("#town_id").empty();
+                    var xhr=new XMLHttpRequest();
+                    xhr.open('get',"{% url 'order:change_select' %}?flag=1&change="+op)
+                    xhr.send();
+                    xhr.onreadystatechange=function () {
+                        if(xhr.readyState==4 && xhr.status==200){
+                            re=xhr.responseText
+                            re1=eval(re)
+                            //console.log(re)
+                            console.log(re1)
+                            for(var i=0;i<re1.length;i++){
+                                area=re1[i].area
+                                console.log(area)
+                                $("#town_id").append('<option>'+area+'</option>')
+                            }
+
+                        }
+                    }
+
+                })
+
+
+            </script>
+            <li><label><strong>*</strong>详细地址：</label><input type="text" name="ship_man" id="detail_address" style="width: 300px;"></li>
+            <li><label><strong>*</strong>邮政编码：</label><input type="text" name="ship_man" id="postcode"></li>
+            <li><label><strong>*</strong>手&nbsp;&nbsp;机：</label><input type="text"name="ship_man" id="phone"><label> </label>
+            </li>
+
+        </ul>
+        <div class="balance">商品金额：<p class="back_price">¥{{ total }}</p>
+            <p class="yfze">应付总额（含运费）：<em class="back_price" >¥{{ total }}</em></p>
+            <p>
+                <a href="javascript:void(0)" id="sub1">提交订单</a></p></div>
+
+    <script>
+        //自动选择地址，填充
+                $("#login_select_address").change(function () {
+                var xhr = new XMLHttpRequest();
+                console.log('地址选择')
+                    ad=$("#login_select_address :selected").text()
+                    console.log(ad)
+                xhr.open('get',"{% url 'order:show_add' %}?show_add="+ad )
+                xhr.send()
+                xhr.onreadystatechange=function () {
+                    if(xhr.readyState==4 && xhr.status==200){
+                        re=xhr.responseText
+                        console.log(re)
+                        //ad=eval("("+re+")")
+                        //注意如果是列表形式的就不需要（）
+                        ad=eval(re)
+                        console.log(ad[0])
+                        i=ad[0]
+                        console.log(i.recipient,i.site,i.zip_code,i.telephone)
+                        $("#receiver_address").val(i.recipient)
+                        $("#detail_address").val(i.site)
+                        $("#postcode").val(i.zip_code)
+                        $("#phone").val(i.telephone)
+{#                        for(i=0;i<ad.length;i++){#}
+{##}
+{#                            $("#receiver_address").val(i.recipient)#}
+{#                            $("#detail_address").val(i.site)#}
+{#                            $("#postcode").val(i.zip_code)#}
+{#                            $("#phone").val(i.telephone)#}
+{##}
+{#                        }#}
+                    }
+                }
+                })
+            </script>
+        <script>
+
+            $("#detail_address").click(function () {
+                co_id = $("#country_id :selected").text()
+
+                p_id = $("#province_id :selected").text()
+                cu_id = $("#city_id :selected").text()
+                t_id = $("#town_id :selected").text()
+                dis_id = $("#quarter_id :selected").text()
+                detail = $("#detail_address").val(co_id+p_id+cu_id+t_id+dis_id)
+
+            })
+
+            $("#sub1").click(function () {
+                //recipent=$("#spn_ship_man").val()
+                detail = $("#detail_address").val()
+                re_ad = $("#receiver_address").val()
+                po = $("#postcode").val()
+                ph = $("#phone").val()
+                console.log(detail, re_ad, po, ph,{{ total }})
+                //注意这里的格式 是 location
+                //如果用户名没有输入
+                if(re_ad==''){
+                    alert('请准确填写地址')
+                }else{
+                     location.href="{% url 'order:submit' %}?receiver="+re_ad+"&detail="+detail+"&po="+po+"&ph="+ph
+                }
+
+
+
+
+            })
+
+
+        </script>
+
+
+    </div>
+    <div class="shdz">
+        <h3>订单1（百知网配送）</h3>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+            <tr style="height:30px; line-height:30px;">
+                <th width="34%">商品名称</th>
+                <th width="11%">所在仓库</th>
+                <th width="13%">百知价</th>
+                <th width="11%">促销价</th>
+                <th width="9%">数量</th>
+                <th width="11%">小计</th>
+                <th width="11%">操作</th>
+            </tr>
+            {% for foo in cart.cartItem %}
+                {% for i in foo.book %}
+
+                    <tr>
+                        <td>{{ i.name }}</td>
+                        <td align="center">{{ i.publisher }}</td>
+                        <td align="center">¥{{ i.market_price }}</td>
+                        <td align="center">¥{{ i.dang_price }}</td>
+                        <td align="center">{{ foo.amount }}</td>
+                        <td align="center">¥{% widthratio i.dang_price 1 foo.amount %}</td>
+                        <td align="center"><a href="javascript:void(0)" id="back1{{ i.id }}">放回购物车</a></td>
+                        <script>
+                            $("#back1{{ i.id }}").click(function () {
+                                var xhr = new XMLHttpRequest();
+                                console.log('返回购物车')
+                                xhr.open('get',"{% url 'order:backcart' %}?pk={{ i.id }}")
+                                xhr.send()
+                                xhr.onreadystatechange=function (){
+                                    if(xhr.readyState==4&&xhr.status==200){
+                                        re=xhr.responseText
+                                        console.log(re)
+                                        ad=eval('('+re+')')
+                                        console.log(ad)
+                                        console.log(ad.total1,ad.save1)
+                                        $(".back_price").text('￥'+ad.total1)
+                                        $("#back1{{ i.id }}").parent().parent().remove()
+
+
+
+                                    }
+                                }
+                            })
+                        </script>
+
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+
+            <tr>
+                <td colspan="2"><input type="checkbox">此订单作为礼品赠送他人</td>
+                <td colspan="2"><strong>运费：</strong>当确认送货方式后显示</td>
+                <td class="table_zj" colspan="3"><strong>小计总额：</strong><em class="back_price">¥{{ total }}</em></td>
+            </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div id="footer">
+    <div class="footer">
+        <div class="footer_nav_box">
+            <div class="footer_copyright"><span>Copyright (C) 当当网 2004-2014, All Rights Reserved</span><a
+                    href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202001051000098" target="_blank"
+                    class="footer_img" rel="nofollow"><img src="http://img4.dangdang.com/bottom/validate.gif"></a><span><a
+                    href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP证041189号</a></span><span>出版物经营许可证&nbsp;新出发京批字第直0673号</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="foot_tip_ad">广告</div>
+<style>
+    .foot_tip_ad {
+        width: 40px;
+        height: 40px;
+        font: 12px/40px "simsun";
+        text-align: center;
+        color: #fff;
+        background-color: #474747;
+        position: fixed;
+        right: 0;
+        bottom: 10px;
+        _position: absolute;
+        _bottom: auto;
+        _top: expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
+    }
+</style>
+
+
+</body>
+</html>

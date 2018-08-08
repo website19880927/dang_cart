@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
+
+
+<body>
+
+<select name="pro" id="province">
+    <option value="">北京</option>
+    <option value="">河北</option>
+</select>
+<select name="ci" id="city">
+    <option value=""></option>
+</select>
+
+<script>
+    $("#provice").change(function () {
+        valu=this.val()
+        console.log(valu)
+        var xhr = new XMLHttpRequest();
+            xhr.open('get',"{% url 'order:city' %}?pro="+valu)
+            xhr.send()
+        xhr.onreadystatechange=function () {
+                if (xhr.readyState==4 && xhr.status==200){
+                    re = xhr.responseText;
+                    var data1= eval('('+re+')')
+                    console.log(data1.save1,data1.total1)
+                    save=data1.save1
+                    total=data1.total1
+                    $("#tot12").text('￥'+total)
+                    $("#tot22").text('￥'+total)
+                    $("#totalFavor").text('￥'+save)
+
+
+                }
+
+
+        }
+
+
+
+    })
+</script>
+
+
+</body>
+</html>

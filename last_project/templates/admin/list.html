@@ -1,0 +1,135 @@
+<style>
+	.d1{
+		background-color: rgb(53,60,68);
+		position: relative;
+		height: 30px;
+		line-height: 30px;
+		padding-left: 10px;
+	}
+	.s1{
+		font-size: 12px;
+		color: white;
+	}
+	.s2{
+		position: absolute;
+		right: 10px;
+	}
+	.s2 a{
+		color: white;
+		font-size: 12px;
+		text-decoration: none;
+	}
+	.t1{
+		border-color:aliceblue;
+		margin-top: 2px;
+		font-size: 12px;
+		text-align: center;
+		background-color: rgb(230,242,254);
+	}
+	.bottom{
+		font-size: 13px;
+		padding-left: 15px;
+		position: relative;
+	}
+	.bs{
+		position: absolute;
+		right: 40px;
+	}
+	.bs a{
+		text-decoration: none;
+		color: black;
+	}
+	.bs a:hover{
+		color: cornflowerblue;
+		text-decoration: underline;
+	}
+</style>
+<div class="d1">
+	<span class="s1">管理人员基本信息表</span>
+</div>
+<table border="2" width="100%" cellspacing="0" class="t1">
+	<tr>
+		<td>
+			<input type="checkbox" />
+		</td>
+		<td>商品ID</td>
+		<td>商品名称</td>
+		<td>作者</td>
+		<td>出版社</td>
+		<td>市场价</td>
+		<td>当当价</td>
+		<td>库存</td>
+		<td>商品种类</td>
+		<td>基本操作</td>
+	</tr>
+    {% for foo in page.object_list %}
+           <tr>
+		<td>
+			<input type="checkbox" />
+		</td>
+		<td>{{ foo.id }}</td>
+		<td>{{ foo.name }}</td>
+		<td>{{ foo.author }}</td>
+		<td>{{ foo.publisher }}</td>
+		<td>{{ foo.market_price }}</td>
+		<td>{{ foo.dang_price }}</td>
+		<td>{{ foo.sales_amount }}</td>
+               {% for j in cate %}
+                   {% if j.id == foo.cate_id_id %}
+                        <td>{{ j.title }}</td>
+                   {% endif %}
+
+               {% endfor %}
+
+
+		<td>
+            <a href="{% url 'user_admin:modify' %}?num={{ foo.id }}">修改</a>
+            <a href="{% url 'user_admin:delete' %}?num={{ foo.id }}">删除</a>
+        </td>
+	</tr>
+    {% endfor %}
+
+
+</table>
+<br>
+<br>
+
+<div class="bottom" style="font-size: 15px; text-align: center">
+
+	共有 {{ amount }}条记录，当前第{{ page.number }} 页，共{{ page.paginator.num_pages }} 页&nbsp&nbsp&nbsp&nbsp
+
+
+{#		<a href="#" style="margin-right: 20px;">上一页</a>#}
+
+     <a href="{% url 'user_admin:pro_list' %}?num=1">首页</a>
+     {% if page.has_previous %}
+            <a href="{% url 'user_admin:pro_list' %}?num={{ page.previous_page_number }}">上一页</a>
+
+        {% endif %}
+		 {% for num in page.paginator.page_range %}
+           {% if page.number == num %}
+                <a style="color: red" href="{% url 'user_admin:pro_list' %}?num={{ num }}">{{ num }}</a>
+            {% else %}
+                <a href="{% url 'user_admin:pro_list' %}?num={{ num }}">{{ num }}</a>
+           {% endif %}
+
+
+       {% endfor %}
+    {% if page.has_next %}
+                <a href="{% url 'user_admin:pro_list' %}?num={{ page.next_page_number }}">下一页</a>
+
+            {% endif %}
+		 <a href="{% url 'user_admin:pro_list' %}?num={{ page.paginator.num_pages }}">尾页</a>
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+

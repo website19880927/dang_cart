@@ -1,0 +1,93 @@
+{% load static %}
+
+<style>
+	.table1{
+		border-color:rgba(180,207,207,0.4);
+	}
+	.td1,.td2{
+		height: 36px;
+	}
+	.td1{
+		text-align: right;
+		padding-right: 5px;
+		background-color: rgb(230,242,254);
+		font-size: 14px;
+	}
+	.td2{
+		padding-left: 5px;
+	}	
+</style>
+<table class="table1" border="1" cellspacing="0" width="1110px">
+	<tr>
+		<td class="td1">子类名称:</td>
+		<td class="td2"><input type="text" id="f1" /></td>
+	</tr>
+	<tr>
+		<td class="td1">子类数量:</td>
+		<td class="td2"><input type="text" id="f2"/></td>
+	</tr>
+	<tr>
+		<td class="td1">父类名称:</td>
+		<td class="td2">
+			<select id="sub">
+                {% for foo in sup %}
+                    <option>{{ foo.title }}</option>
+                {% endfor %}
+
+
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td style="padding-left: 24%;" colspan="2">
+			<input type="button" value="提交" id="s1" />
+			<input type="button" value="重置" id="s2"/>
+		</td>
+	</tr>
+<script src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
+<script>
+        $("#s1").click(function () {
+            valu=$("#f1").val()
+            valu2=$("#f2").val()
+            valu3=$("#sub :selected").text()
+            console.log(valu,valu2,valu3)
+
+            location.href="{% url 'user_admin:sub_logic' %}?cate="+valu+"&amount="+valu2+"&cateid="+valu3
+        });
+        $("#s2").click(function () {
+            $("#f1").val('空')
+            $("#f2").val('空')
+        })
+
+    </script>
+</table>
+
+{#<script>#}
+{#    $("#son").click(function () {#}
+{#        valu=this.value#}
+{#        console.log(valu)#}
+{#          $("#sub").empty();#}
+{#                    var xhr=new XMLHttpRequest();#}
+{#                    xhr.open('get',"{% url 'user_admin:ajax' %}?change="+op)#}
+{#                    xhr.send();#}
+{#                    xhr.onreadystatechange=function () {#}
+{#                        if(xhr.readyState==4 && xhr.status==200){#}
+{#                            re=xhr.responseText#}
+{#                            re1=eval(re)#}
+{#                            console.log(re)#}
+{#                            console.log(re1)#}
+{#                            for(var i=0;i<re1.length;i++){#}
+{#                                title=re1[i].title#}
+{#                                console.log(title)#}
+{#                                $("#sub").append('<option>'+title+'</option>')#}
+{#                            }#}
+{##}
+{#                        }#}
+{#                    }#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#    })#}
+{#</script>#}

@@ -1,0 +1,41 @@
+{% load static %}
+<script src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
+<style>
+	.t1{
+		text-align: right;
+		padding-right: 5px;
+		background-color: rgb(230,242,254);
+		width: 46%;
+		font-size: 12px;
+	}
+	.t2{
+		height: 30px;
+		padding-left: 42%;
+		
+	}
+	.t1,.t2{
+		height: 30px;
+	}
+</style>
+<table border="1" cellspacing="0" style="width: 100%;border-color:rgba(180,207,207,0.4)">
+	<tr>
+		<td class="t1">父类名称：</td>
+		<td style="padding-left: 4px;"><input type="text" id="f1"/></td>
+	</tr>
+	<tr>
+		<td class="t2" colspan="2">
+			<input type="button" id="s1" value="提交" />
+			<input type="button" id="s2" value="重置"/>
+		</td>
+	</tr>
+    <script>
+        $("#s1").click(function () {
+            valu=$("#f1").val()
+            location.href="{% url 'user_admin:super_logic' %}?cate="+valu
+        });
+        $("#s2").click(function () {
+            $("#f1").val('空')
+        })
+
+    </script>
+</table>
